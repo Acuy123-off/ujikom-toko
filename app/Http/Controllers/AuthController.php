@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\produk;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,7 +52,7 @@ class AuthController extends Controller
         'password'=>bcrypt($request->password),
         'role'=>'customer'
         ]);
-        
+
         return redirect()->route('loginview');
     }
 
@@ -59,7 +60,9 @@ class AuthController extends Controller
         return view('admin');
     }
 
-    public function menu(){
-        return view('menu');
+    public function menu()
+    {
+       $produk = produk::all();
+        return view('menu', compact('produk'));
     }
 }

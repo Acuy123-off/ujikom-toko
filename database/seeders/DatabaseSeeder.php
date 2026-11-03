@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         'name'=>'pop ice',
         'harga'=>2000,
         'desk'=>'',
-        'foto'=>'popice.jpg',
+        'foto'=>'foto/popice.jpg',
         'qty'=>120
         ]);
     }

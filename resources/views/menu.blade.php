@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
+    @include('template.nav')
     <div class="row">
         <div class="col-3">
             @foreach ($produk as $p)

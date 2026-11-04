@@ -57,7 +57,8 @@ class AuthController extends Controller
     }
 
     public function admin(){
-        return view('admin');
+        $produk = produk::all();
+        return view('admin',compact('produk'));
     }
 
     public function menu()

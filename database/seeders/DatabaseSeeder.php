@@ -36,13 +36,26 @@ class DatabaseSeeder extends Seeder
         'name'=>'makan'
         ]);
 
+        kategori::create([
+        'name'=>'minum'
+        ]);
+
         produk::create([
-        'kategori_id'=>'1',
+        'kategori_id'=>'2',
         'name'=>'pop ice',
         'harga'=>2000,
         'desk'=>'',
         'foto'=>'foto/popice.jpg',
         'qty'=>120
+        ]);
+
+        produk::create([
+        'kategori_id'=>'1',
+        'name'=>'Batagor',
+        'harga'=>5000,
+        'desk'=>'',
+        'foto'=>'foto/batagor.jpg',
+        'qty'=>100
         ]);
     }
 }

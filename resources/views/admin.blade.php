@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <a href="" class="btn btn-success">Tambah</a>
+        <a href="{{ route('tambahview') }}" class="btn btn-success">Tambah</a>
         <table class="table" id="tablepemantapan">
         <thead>
             <tr>
@@ -28,14 +28,14 @@
             @foreach ($produk as $p)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td><img src="{{ asset($p->foto) }}" style="height: 100px" alt=""></td>
+                <td><img src="{{ asset('storage/'.$p->foto) }}" style="height: 100px" alt=""></td>
                 <td>{{ $p->name }}</td>
                 <td>{{ $p->harga }}</td>
                 <td>{{ $p->deskripsi }}</td>
                 <td>{{ $p->qty }}</td>
                 <td>
                     <a href="" class="btn btn-warning">Edit</a>
-                    <a href="" class="btn btn-danger">Hapus</a>
+                    <a href="{{ route('hapus',$p->id) }}" class="btn btn-danger">Hapus</a>
                 </td>
             </tr>
             @endforeach

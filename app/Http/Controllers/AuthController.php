@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\kategori;
 use App\Models\produk;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -65,5 +66,37 @@ class AuthController extends Controller
     {
        $produk = produk::all();
         return view('menu', compact('produk'));
+    }
+
+    public function tambah(){
+        $kategori = kategori::all();
+        return view('tambah',compact('kategori'));
+    }
+
+    public function posttambah(Request $request){
+        $request->validate([
+            'name'=>'required',
+            'harga'=>'required|integer',
+            'foto'=>'required|image',
+            'qty'=>'required|integer',
+            'deskripsi'=>'required',
+            'kategori_id'=>'required'
+        ]);
+
+        produk::create([
+        'kategori_id'=>$request->kategori_id,
+        'name'=>$request->name,
+        'harga'=>$request->harga,
+        'desk'=>$request->deskripsi,
+        'foto'=>$request->file('foto')->store('foto','public'),
+        'qty'=>$request->qty
+        ]);
+
+        return redirect()->route('adminview');
+    }
+
+    public function hapus(produk $produk){
+        $produk->delete();
+        return redirect()->route('adminview');
     }
 }

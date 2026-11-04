@@ -36,3 +36,11 @@ Route::post('/postregister',[AuthController::class,'postregister'])->name('postr
 Route::get('/admin',[AuthController::class,'admin'])->name('adminview');
 Route::get('/menu',[AuthController::class,'menu'])->name('menuview');
 
+//Tambah menu
+Route::get('/tambah',[AuthController::class,'tambah'])->name('tambahview');
+Route::post('/posttambah',[AuthController::class,'posttambah'])->name('posttambah');
+
+
+//Hapus Menu
+Route::get('/hapus/{produk}',[AuthController::class,'hapus'])->name('hapus');
+

@@ -91,12 +91,39 @@ class AuthController extends Controller
         'foto'=>$request->file('foto')->store('foto','public'),
         'qty'=>$request->qty
         ]);
-
         return redirect()->route('adminview');
     }
 
     public function hapus(produk $produk){
         $produk->delete();
+        return redirect()->route('adminview');
+    }
+
+    public function edit(produk $produk){
+
+        $kategori = kategori::all();
+        return view('edit',compact('produk','kategori'));
+    }
+
+    public function postedit(Request $request,produk $produk){
+        $data = $request->validate([
+            'name'=>'required',
+            'harga'=>'required|integer',
+            'foto'=>'required|image',
+            'qty'=>'required|integer',
+            'desk'=>'required',
+            'kategori_id'=>'required'
+        ]);
+
+        // if($request->hasFile('foto')){
+        //     $data['foto'] = $request->file('foto')->store('foto','public');
+        // }
+        // else{
+        //     unset($data['foto']);
+        // }
+
+        $data['foto'] = $request->file('foto')->store('foto','public');
+        $produk->update($data);
         return redirect()->route('adminview');
     }
 }

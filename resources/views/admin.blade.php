@@ -31,10 +31,10 @@
                 <td><img src="{{ asset('storage/'.$p->foto) }}" style="height: 100px" alt=""></td>
                 <td>{{ $p->name }}</td>
                 <td>{{ $p->harga }}</td>
-                <td>{{ $p->deskripsi }}</td>
+                <td>{{ $p->desk }}</td>
                 <td>{{ $p->qty }}</td>
                 <td>
-                    <a href="" class="btn btn-warning">Edit</a>
+                    <a href="{{ route('edit',$p->id) }}" class="btn btn-warning">Edit</a>
                     <a href="{{ route('hapus',$p->id) }}" class="btn btn-danger">Hapus</a>
                 </td>
             </tr>

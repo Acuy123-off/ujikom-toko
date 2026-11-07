@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class kategori extends Model
 {
     use HasFactory;
+    protected $fillable = ['name'];
     public function produk(){
         return $this->hasMany(produk::class);
     }
